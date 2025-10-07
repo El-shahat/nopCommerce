@@ -26,8 +26,8 @@ public class Cart extends configuration
     @When("user click on first prize pies book")
     public void userClickOnFirstPrizePiesBook() throws IOException {
         ExplicitWaitUntilAllElementWithItsJavaScriptsBeReady();
-       set("FirstPrizePies", book.Book_Name_First_Prize_Pies.getText());
-       set("FirstPrizePiesPrice",book.Book_unitPrice_First_Prize_Pies.getText());
+       set("FirstPrizePies", book.Book_Name_First_Prize_Pies.getText(),"config.properties");
+       set("FirstPrizePiesPrice",book.Book_unitPrice_First_Prize_Pies.getText(),"config.properties");
        System.out.printf("price:%s \n book name:%s",book.Book_Name_First_Prize_Pies.getText(),book.Book_unitPrice_First_Prize_Pies.getText());
 
        book.Add_First_Prize_Pies_Book_To_Cart.click();
@@ -49,8 +49,8 @@ public class Cart extends configuration
 
 
                 SoftAssert soft =new SoftAssert();
-                soft.assertEquals(cartPage.unitPrice.getText(),get("FirstPrizePiesPrice"));
-                soft.assertEquals(cartPage.productName.getText(),get("FirstPrizePies") );
+                soft.assertEquals(cartPage.unitPrice.getText(),get("FirstPrizePiesPrice","config.properties"));
+                soft.assertEquals(cartPage.productName.getText(),get("FirstPrizePies","config.properties") );
 
 
                 soft.assertAll();
@@ -65,7 +65,7 @@ public class Cart extends configuration
          switch(role) {
              case "up" :    cartPage.upArrow.click();
              ExplicitWaitUntilAllElementWithItsJavaScriptsBeReady();
-             set("quantity", cartPage.productQuantity.getAttribute("value"));
+             set("quantity", cartPage.productQuantity.getAttribute("value"),"config.properties");
              System.out.println("price:"+cartPage.productQuantity.getAttribute("value"));
              arrowType ="up";
              break;
@@ -82,7 +82,7 @@ public class Cart extends configuration
         ExplicitWaitUntilAllElementWithItsJavaScriptsBeReady();
         SoftAssert soft= new SoftAssert();
         if(arrowType.equals("up")){
-        soft.assertEquals(get("quantity"),"2");
+        soft.assertEquals(get("quantity","config.properties"),"2");
         soft.assertAll();
         }
         else{

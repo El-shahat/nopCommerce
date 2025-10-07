@@ -74,7 +74,7 @@ public class signUp extends configuration {
         if (currentScenario.getName().contains("P")) {
             ExplicitWaitUntilElementBeVisible(By.id("Email"));
             register.Email.sendKeys(email=FakeData.randomEmail());
-            set("email",email);
+            set("email",email,"config.properties");
         } else {
             ExplicitWaitUntilElementBeVisible(By.id("Email"));
             register.Email.sendKeys(arg0);
@@ -114,7 +114,7 @@ public class signUp extends configuration {
 
         register.password.sendKeys(Confirm = FakeData.randomPassword());
         ConfirmPassword = Confirm;
-        set("password",Confirm);
+        set("password",Confirm,"config.properties");
 
     }
 

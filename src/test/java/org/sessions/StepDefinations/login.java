@@ -27,13 +27,13 @@ public class login extends configuration
     @When("user enter a valid email")
     public void userEnterAValidEmail()throws IOException
     {
-        login.EmailField.sendKeys(get("email"));
+        login.EmailField.sendKeys(get("email","config.properties"));
     }
 
     @And("user enter a valid password")
     public void userEnterAValidPassword() throws IOException
     {
-        login.PasswordField.sendKeys(get("password"));
+        login.PasswordField.sendKeys(get("password","config.properties"));
     }
 
     @And("click on remember me checkbox{string}")

@@ -3,6 +3,7 @@ package org.sessions.StepDefinations;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import io.cucumber.messages.types.Feature;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -23,9 +24,10 @@ public class Hooks extends configuration
     public void openBrowser(Scenario scenario)throws IOException
     {   currentScenario =scenario;
 
-        String url = get("url");
+        String url = get("url","config.properties");
 
-
+        if(!scenario.getName().contains("(customerInfo)")&&!scenario.getName().contains("(addresses)"))
+        {
         switch(BrowserType)
         {
         case "Edge":System.setProperty("webdriver.edge.driver", "D:\\java course\\edgedriver_win64\\msedgedriver.exe");
@@ -58,7 +60,7 @@ public class Hooks extends configuration
         break;
         default:break;
 
-    }
+    }}
     }
     @After
     public void quitBrowser(Scenario scenario)
@@ -66,7 +68,8 @@ public class Hooks extends configuration
 
         if(driver!=null)
         {
-            if(!scenario.getName().equals("user could login to his account with valid credentials")) {
+            if(!scenario.getName().contains("login")&&!scenario.getName().contains("(customerInfo)")&&!scenario.getName().contains("(addresses)")) {
+
                 driver.quit();
                 driver = null;
             }

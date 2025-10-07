@@ -41,21 +41,21 @@ public class configuration
        this method allow to user to set special or general data inside specific file
        if file.properties doesn`t created it may make an error
      */
-    protected  void set(String Key,String Value) throws  IOException
+    protected  void set(String Key,String Value,String file) throws  IOException
     {
         Properties prop =new Properties();
-        FileInputStream fis =new FileInputStream("config.properties");
+        FileInputStream fis =new FileInputStream(file);
         prop.load(fis);
         prop.setProperty(Key,Value);
         fis.close();
-        FileOutputStream fos =new FileOutputStream("config.properties");
+        FileOutputStream fos =new FileOutputStream(file);
         prop.store(fos,"Update opened file");
         fos.close();
     }
-   protected String get(String Key) throws IOException
+   protected String get(String Key,String file) throws IOException
    {  String returned_value;
        Properties prop =new Properties();
-       FileInputStream fis =new FileInputStream("config.properties");
+       FileInputStream fis =new FileInputStream(file);
        prop.load(fis);
      returned_value= prop.getProperty(Key);
      fis.close();

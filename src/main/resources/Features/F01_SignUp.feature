@@ -6,7 +6,7 @@ Feature: SignUp: this feature allow to guest users to create a new account
     Given user click on register button
 
 #Positive Scenario
-  @smoke
+  @sc1
   Scenario Outline:guest user could create a valid account P
     When user enter genderType "<type>"
     And user enter first and last name

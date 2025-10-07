@@ -10,7 +10,7 @@ import org.testng.annotations.Parameters;
         features = "D:\\java course\\nopCommerce\\src\\main\\resources\\Features",
 
         glue ="org.sessions.StepDefinations",
-        tags="@smoke",
+        tags="@sc1",
         plugin =
         {
                 "pretty",
@@ -23,8 +23,7 @@ import org.testng.annotations.Parameters;
 )
 public class runners extends AbstractTestNGCucumberTests
 {
-        @BeforeClass(alwaysRun = true)
-        @Parameters({"featureOrder"})
+
         public void runInOrder() {
                 System.out.println("Running features in defined order...");
         }

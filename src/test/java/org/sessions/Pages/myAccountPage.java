@@ -62,7 +62,8 @@ public static class Addresses extends PageBase {
     {
         super(driver);
     }
-
+    @FindBy(xpath = "//li[@class='customer-addresses inactive']//a[.='Addresses']")
+    public static WebElement AddressesTab;
     @FindBy(xpath = "//div[@class='no-data']")
     public static WebElement NoAddressesMessage;
     @FindBy(xpath = "//button[@class='button-1 add-address-button']")
@@ -96,7 +97,10 @@ public static class Addresses extends PageBase {
     public static WebElement faxNumber;
     @FindBy(xpath = "//button[@class='button-1 save-address-button']")
     public static WebElement saveButton;
-
+    @FindBy(xpath = "//div[@class='bar-notification success']")
+    public static WebElement barNotification;
+    @FindBy(xpath = "//p[@class='content']")
+    public static WebElement successMessage;
     //------------------------------------------------------------------------------
     @FindBy(xpath = "//strong[.='ahmed `shahat']")
     public static WebElement username;
@@ -118,6 +122,8 @@ public static class Addresses extends PageBase {
     public static WebElement customerAddress1;
     @FindBy(xpath = "//li[@class='address2']")
     public static WebElement customerAddress2;
+    @FindBy(xpath = "//li[@class='company']")
+    public static WebElement customerCompany;
     //------------------------------------
     @FindBy(xpath = "//button[@class='button-2 edit-address-button']")
     public static WebElement edit;
@@ -126,11 +132,12 @@ public static class Addresses extends PageBase {
 
     public static void init() throws IllegalAccessException {
         Addresses temp =new Addresses();
+
         for(Field f: Addresses.class.getDeclaredFields())
         {
              if(Modifier.isStatic(f.getModifiers()) && f.getType() == WebElement.class)
              {
-                 f.set(null,temp);
+                 f.set(null,f.get(temp));
              }
         }
     }
@@ -155,7 +162,7 @@ public static void init() throws IllegalAccessException {
     {
         if(Modifier.isStatic(f.getModifiers()) && f.getType().equals(WebElement.class))
         {
-            f.set(null,temp);
+            f.set(null,f.get(temp));
         }
     }
 }

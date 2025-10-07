@@ -3,8 +3,8 @@
 
     Background: shared steps for login page
       Given user click on login button
-    @smoke
-    Scenario Outline: user could login to his account with valid credentials
+    @sc1
+    Scenario Outline: user could login to his account with valid credentials login
         When user enter a valid email
         And user enter a valid password
         And click on remember me checkbox"<role>"
