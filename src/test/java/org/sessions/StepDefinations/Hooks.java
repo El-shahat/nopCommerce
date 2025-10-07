@@ -16,7 +16,7 @@ import java.time.Duration;
 
 public class Hooks extends configuration
 {
-   public  static WebDriver driver ;
+   public static WebDriver driver ;
     static String BrowserType ="Edge";
 
     @Before
@@ -24,11 +24,11 @@ public class Hooks extends configuration
     {   currentScenario =scenario;
 
         String url = get("url");
-        if(scenario.getName().equals("user could login to his account with valid credentials")|| scenario.getName().equals("guest user could create a valid account P"))
-        {
+
+
         switch(BrowserType)
         {
-            case "Edge":System.setProperty("webdriver.edge.driver", "D:\\java course\\edgedriver_win64\\msedgedriver.exe");
+        case "Edge":System.setProperty("webdriver.edge.driver", "D:\\java course\\edgedriver_win64\\msedgedriver.exe");
         EdgeOptions options1 = new EdgeOptions();
         options1.addArguments("--remote-allow-origins=*");
         driver = new EdgeDriver(options1);
@@ -58,7 +58,7 @@ public class Hooks extends configuration
         break;
         default:break;
 
-    }}
+    }
     }
     @After
     public void quitBrowser(Scenario scenario)

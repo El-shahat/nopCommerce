@@ -3,7 +3,7 @@
 
     Background: shared steps for login page
       Given user click on login button
-    @login
+    @smoke
     Scenario Outline: user could login to his account with valid credentials
         When user enter a valid email
         And user enter a valid password

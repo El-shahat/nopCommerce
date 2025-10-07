@@ -1,6 +1,6 @@
 @regression
   Feature: this feature allow to user to change has own account details and be aware with order state
-    @myaccount
+    @smoke
     Scenario: Verify that registered user could edit has registered information
       Given registered user navigate to myAccountPage
       When registered user edit has gender

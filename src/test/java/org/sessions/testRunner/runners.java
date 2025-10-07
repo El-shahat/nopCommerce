@@ -10,7 +10,7 @@ import org.testng.annotations.Parameters;
         features = "D:\\java course\\nopCommerce\\src\\main\\resources\\Features",
 
         glue ="org.sessions.StepDefinations",
-        tags="@signUp or @login or @myaccount",
+        tags="@smoke",
         plugin =
         {
                 "pretty",

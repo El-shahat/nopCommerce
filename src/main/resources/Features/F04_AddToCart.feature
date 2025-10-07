@@ -1,11 +1,11 @@
 Feature: this feature allow to user to add his own products in a cart
-
+@smoke
   Scenario: Verify that user could find has own chosen product in the cart page
     Given user click on book item in main menu
     When  user click on first prize pies book
     And navigate to cart page
     Then the product has been added successfully in the cart
-
+@smoke
     Scenario Outline: Verify that Quantity functionality
       Given user click on book item in main menu
       When  user click on first prize pies book
@@ -16,7 +16,7 @@ Feature: this feature allow to user to add his own products in a cart
       |role|
       | up |
       |down|
-
+@smoke
       Scenario: Verify that user could remove item by click on remove button
         Given user click on book item in main menu
         When  user click on first prize pies book

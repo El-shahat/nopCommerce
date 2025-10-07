@@ -1,8 +1,15 @@
 package org.sessions.Pages;
 
+import com.github.dockerjava.core.dockerfile.DockerfileStatement;
+import net.bytebuddy.implementation.bind.annotation.Super;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import javax.xml.xpath.XPath;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.List;
 
 import static  org.sessions.StepDefinations.Hooks.driver;
@@ -50,79 +57,90 @@ public  static  class customerInfo
       }
 
  }
-public static class Addresses
- {public Addresses()
- {
-     PageFactory.initElements(driver,this);
- }
-     @FindBy(xpath = "//div[@class='no-data']")
-     public static WebElement NoAddressesMessage;
-     @FindBy(xpath = "//button[@class='button-1 add-address-button']")
-     public  static WebElement AddNewButton;
-     @FindBy(xpath = "//h1[.='My account - Addresses']")
-     public static WebElement label;
-     //-------------------------------------------------------
-     @FindBy(xpath = "//input[@id='Address_FirstName']")
-     public static WebElement firstName;
-     @FindBy(xpath = "//input[@id='Address_LastName']")
-     public static WebElement lastName;
-     @FindBy(xpath = "//input[@id='Address_Email']")
-     public static WebElement email;
-     @FindBy(xpath = "//input[@id='Address_Company']")
-     public static WebElement company;
-     @FindBy(xpath = "//select[@id='Address_CountryId']")
-     public static WebElement country;
-     @FindBy(xpath = "//select[@id='Address_StateProvinceId']")
-     public static WebElement state;
-     @FindBy(xpath = "//input[@id='Address_City']")
-     public static WebElement city;
-     @FindBy(xpath = "//div[@class='edit-address']/div[8]/input[1]")
-     public static WebElement Addresses1;
-     @FindBy(xpath = "//div[9]/input[1]")
-     public static WebElement Addresses2;
-     @FindBy(xpath = "//input[@id='Address_ZipPostalCode']")
-     public static WebElement postalCode;
-     @FindBy(xpath = "//input[@id='Address_PhoneNumber']")
-     public static WebElement phoneNo;
-     @FindBy(xpath = "//input[@id='Address_FaxNumber']")
-     public static WebElement faxNumber;
-     @FindBy(xpath = "//button[@class='button-1 save-address-button']")
-     public static WebElement saveButton;
+public static class Addresses extends PageBase {
+    public Addresses()
+    {
+        super(driver);
+    }
 
-     //------------------------------------------------------------------------------
-     @FindBy(xpath = "//strong[.='ahmed `shahat']")
-     public static WebElement username;
-     @FindBy(xpath = "//li[@class='name']")
-     public static WebElement customerName;
-     @FindBy(xpath = "//li[@class='email']")
-     public static WebElement customerEmail;
-     @FindBy(xpath = "//li[@class='phone']")
-     public static WebElement customerPhone;
-     @FindBy(xpath = "//li[@class='fax']")
-     public static WebElement customerFax;
-     @FindBy(xpath = "//li[@class='country']")
-     public static WebElement customerCountry;
-     @FindBy(xpath="//li[@class='stateprovince']")
-     public  static WebElement customerState;
-     @FindBy(xpath = "//li[@class='city']")
-     public static WebElement customerCity;
-     @FindBy(xpath = "//li[@class='address1']")
-     public static WebElement customerAddress1;
-     @FindBy(xpath = "//li[@class='address2']")
-     public static WebElement customerAddress2;
-     //------------------------------------
-     @FindBy(xpath = "//button[@class='button-2 edit-address-button']")
-     public static WebElement edit;
-     @FindBy(xpath = "//button[@class='button-2 delete-address-button']")
-     public static WebElement delete;
+    @FindBy(xpath = "//div[@class='no-data']")
+    public static WebElement NoAddressesMessage;
+    @FindBy(xpath = "//button[@class='button-1 add-address-button']")
+    public static WebElement AddNewButton;
+    @FindBy(xpath = "//h1[.='My account - Addresses']")
+    public static WebElement label;
+    //-------------------------------------------------------
+    @FindBy(xpath = "//input[@id='Address_FirstName']")
+    public static WebElement firstName;
+    @FindBy(xpath = "//input[@id='Address_LastName']")
+    public static WebElement lastName;
+    @FindBy(xpath = "//input[@id='Address_Email']")
+    public static WebElement email;
+    @FindBy(xpath = "//input[@id='Address_Company']")
+    public static WebElement company;
+    @FindBy(xpath = "//select[@id='Address_CountryId']")
+    public static WebElement country;
+    @FindBy(xpath = "//select[@id='Address_StateProvinceId']")
+    public static WebElement state;
+    @FindBy(xpath = "//input[@id='Address_City']")
+    public static WebElement city;
+    @FindBy(xpath = "//div[@class='edit-address']/div[8]/input[1]")
+    public static WebElement Addresses1;
+    @FindBy(xpath = "//div[9]/input[1]")
+    public static WebElement Addresses2;
+    @FindBy(xpath = "//input[@id='Address_ZipPostalCode']")
+    public static WebElement postalCode;
+    @FindBy(xpath = "//input[@id='Address_PhoneNumber']")
+    public static WebElement phoneNo;
+    @FindBy(xpath = "//input[@id='Address_FaxNumber']")
+    public static WebElement faxNumber;
+    @FindBy(xpath = "//button[@class='button-1 save-address-button']")
+    public static WebElement saveButton;
 
+    //------------------------------------------------------------------------------
+    @FindBy(xpath = "//strong[.='ahmed `shahat']")
+    public static WebElement username;
+    @FindBy(xpath = "//li[@class='name']")
+    public static WebElement customerName;
+    @FindBy(xpath = "//li[@class='email']")
+    public static WebElement customerEmail;
+    @FindBy(xpath = "//li[@class='phone']")
+    public static WebElement customerPhone;
+    @FindBy(xpath = "//li[@class='fax']")
+    public static WebElement customerFax;
+    @FindBy(xpath = "//li[@class='country']")
+    public static WebElement customerCountry;
+    @FindBy(xpath = "//li[@class='stateprovince']")
+    public static WebElement customerState;
+    @FindBy(xpath = "//li[@class='city']")
+    public static WebElement customerCity;
+    @FindBy(xpath = "//li[@class='address1']")
+    public static WebElement customerAddress1;
+    @FindBy(xpath = "//li[@class='address2']")
+    public static WebElement customerAddress2;
+    //------------------------------------
+    @FindBy(xpath = "//button[@class='button-2 edit-address-button']")
+    public static WebElement edit;
+    @FindBy(xpath = "//button[@class='button-2 delete-address-button']")
+    public static WebElement delete;
+
+    public static void init() throws IllegalAccessException {
+        Addresses temp =new Addresses();
+        for(Field f: Addresses.class.getDeclaredFields())
+        {
+             if(Modifier.isStatic(f.getModifiers()) && f.getType() == WebElement.class)
+             {
+                 f.set(null,temp);
+             }
+        }
+    }
  }
-public static class Orders
+public static class Orders extends PageBase
+ {public Orders()
  {
-     public Orders()
-     {
-         PageFactory.initElements(driver,this);
-     }
+     super(driver);
+ }
+
 @FindBy(xpath = "//div[@class='no-data']")
      public static WebElement noOrderMessage;
 @FindBy(xpath = "//h1[.='My account - Orders']")
@@ -131,6 +149,16 @@ public static class Orders
      public static List<WebElement> orderInfo;
 @FindBy(xpath = "//strong[.='Order Number: 6']")
 public static WebElement orderNo;
+public static void init() throws IllegalAccessException {
+    Orders temp = new Orders();
+    for (Field f : Orders.class.getDeclaredFields())
+    {
+        if(Modifier.isStatic(f.getModifiers()) && f.getType().equals(WebElement.class))
+        {
+            f.set(null,temp);
+        }
+    }
+}
 
  }
   public  static class DownloadableProducts
