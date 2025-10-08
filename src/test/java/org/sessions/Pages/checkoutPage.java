@@ -99,7 +99,7 @@ public class checkoutPage extends PageBase{
         {
             super(driver);
         }
-        @FindBy(xpath = "//label[.='Ground ($0.00)']")
+        @FindBy(css = "div[class=\"method-name\"]>input[id=\"shippingoption_0\"]")
         public static WebElement Ground;
         @FindBy(xpath = "//label[.='Next Day Air ($0.00)']")
         public static WebElement NextDayAir;
@@ -132,6 +132,16 @@ public class checkoutPage extends PageBase{
         public static WebElement moneyOrder;
    @FindBy(xpath = "//input[@value='Payments.Manual']")
         public static WebElement creditCard;
+        public static void init() throws IllegalAccessException
+        {     payment temp =new payment();
+            for(Field f:payment.class.getDeclaredFields())
+            {
+                if(Modifier.isStatic(f.getModifiers()) && f.getType() ==WebElement.class)
+                {
+                    f.set(null,f.get(temp));
+                }
+            }
+        }
 
     }
     public static class paymentInfo extends PageBase
@@ -141,6 +151,16 @@ public class checkoutPage extends PageBase{
     }
         @FindBy(xpath = "//button[@class='button-1 payment-info-next-step-button']")
         public static WebElement continueButton;
+        public static void init() throws IllegalAccessException
+        {     paymentInfo temp =new paymentInfo();
+            for(Field f:paymentInfo.class.getDeclaredFields())
+            {
+                if(Modifier.isStatic(f.getModifiers()) && f.getType() ==WebElement.class)
+                {
+                    f.set(null,f.get(temp));
+                }
+            }
+        }
     }
     public static class confirmOrder extends PageBase
     {
@@ -150,6 +170,16 @@ public class checkoutPage extends PageBase{
         }
         @FindBy(xpath="//button[@class='button-1 confirm-order-next-step-button']")
         public static WebElement confirmButton;
+        public static void init() throws IllegalAccessException
+        {     confirmOrder temp =new confirmOrder();
+            for(Field f:confirmOrder.class.getDeclaredFields())
+            {
+                if(Modifier.isStatic(f.getModifiers()) && f.getType() ==WebElement.class)
+                {
+                    f.set(null,f.get(temp));
+                }
+            }
+        }
     }
     public static class completedMessage extends PageBase {
         public completedMessage()
@@ -162,6 +192,16 @@ public class checkoutPage extends PageBase{
         public static WebElement ordernumber;
         @FindBy(xpath = "//button[@class='button-1 order-completed-continue-button']")
         public static  WebElement continueButton;
+        public static void init() throws IllegalAccessException
+        {     completedMessage temp =new completedMessage();
+            for(Field f:completedMessage.class.getDeclaredFields())
+            {
+                if(Modifier.isStatic(f.getModifiers()) && f.getType() ==WebElement.class)
+                {
+                    f.set(null,f.get(temp));
+                }
+            }
+        }
     }
 
 }

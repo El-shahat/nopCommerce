@@ -71,20 +71,22 @@ public class checkout extends  configuration
         billingAddress.fax.sendKeys("12323");
         billingAddress.phone.sendKeys("01012345678");
         billingAddress.postal.sendKeys("123321");
-        state.selectByIndex((int)Math.floor(Math.random()*(state.getOptions().size()-1)+1));
+        state.selectByIndex((int)Math.floor(Math.random()*(state.getOptions().size()-0)+0));
         billingAddress.continueButton.click();
     }
 
     @And("the user selects a preferred shipping method")
-    public void theUserSelectsAPreferredShippingMethod() {
+    public void theUserSelectsAPreferredShippingMethod() throws IllegalAccessException {
     ExplicitWaitUntilAllElementWithItsJavaScriptsBeReady();
+    checkoutPage.shippingMethod.init();
     checkoutPage.shippingMethod.Ground.click();
     checkoutPage.shippingMethod.continueButton.click();
     }
 
     @And("the user selects a payment method")
-    public void theUserSelectsAPaymentMethod() {
+    public void theUserSelectsAPaymentMethod() throws IllegalAccessException {
     ExplicitWaitUntilAllElementWithItsJavaScriptsBeReady();
+    checkoutPage.payment.init();
     checkoutPage.payment.moneyOrder.click();
     checkoutPage.payment.continueButton.click();
     }
@@ -95,20 +97,23 @@ public class checkout extends  configuration
     }
 
     @And("the user clicks on Continue")
-    public void theUserClicksOnContinue() {
+    public void theUserClicksOnContinue() throws IllegalAccessException {
     ExplicitWaitUntilAllElementWithItsJavaScriptsBeReady();
+    checkoutPage.paymentInfo.init();
         checkoutPage.paymentInfo.continueButton.click();
     }
 
     @And("the user clicks on Confirm order")
-    public void theUserClicksOnConfirmOrder() {
+    public void theUserClicksOnConfirmOrder() throws IllegalAccessException {
     ExplicitWaitUntilAllElementWithItsJavaScriptsBeReady();
+    checkoutPage.confirmOrder.init();
     checkoutPage.confirmOrder.confirmButton.click();
     }
 
     @Then("the order should be placed successfully")
-    public void theOrderShouldBePlacedSuccessfully() {
+    public void theOrderShouldBePlacedSuccessfully() throws IllegalAccessException {
         ExplicitWaitUntilAllElementWithItsJavaScriptsBeReady();
+        checkoutPage.completedMessage.init();
         SoftAssert soft =new SoftAssert();
         //here iam calling ordernumber webelemnt that contain order numer then we need to ensure that contain a number
         soft.assertTrue(checkoutPage.completedMessage.ordernumber.getText().matches(".*\\\\d+.*"),"order number is not displayed");//this mean it contain a number .*\\d+.*;
