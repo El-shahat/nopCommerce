@@ -1,6 +1,6 @@
 @regression
   Feature: this feature allow to user to change has own account details and be aware with order state
-    @sc1
+    @smoke
     Scenario: Verify that registered user could edit has registered information (customerInfo)
       Given registered user navigate to myAccountPage
       When registered user edit has gender
@@ -10,7 +10,7 @@
       And registered user clcik on news letter
       And registered user click save
       Then has account details has been successfully edited
-@sc1
+@smoke
 Scenario: Verify that user could add a new addresses (addresses)
   Given  registered user navigate to myAccountPage
   And    user click on addresses tab
@@ -23,3 +23,4 @@ Scenario: Verify that user could add a new addresses (addresses)
   And    user enter postal code and phone number and fax number
   And    user click on save button
   Then   successfully new address message is displayed
+

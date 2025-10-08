@@ -56,7 +56,9 @@ public  static  class customerInfo
           SuccessMessageColor=temp.SuccessMessageColor;
       }
 
- }
+ }//input[@id='BillingNewAddress_FirstName']
+    //input[@id='BillingNewAddress_LastName']
+    //input[@id='BillingNewAddress_Email']
 public static class Addresses extends PageBase {
     public Addresses()
     {

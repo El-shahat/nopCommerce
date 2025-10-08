@@ -28,4 +28,8 @@ public class CartPage
     public WebElement downArrow;
     @FindBy(css="div[class=\"no-data\"]")
     public WebElement emptyCartMessage;
+    @FindBy(xpath = "//button[@id='checkout']")
+    public WebElement checkoutButton;
+    @FindBy(xpath = "//input[@id='termsofservice']")
+    public WebElement checkboxTerm;
 }

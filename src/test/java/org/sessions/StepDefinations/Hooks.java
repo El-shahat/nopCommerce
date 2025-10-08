@@ -25,8 +25,8 @@ public class Hooks extends configuration
     {   currentScenario =scenario;
 
         String url = get("url","config.properties");
-
-        if(!scenario.getName().contains("(customerInfo)")&&!scenario.getName().contains("(addresses)"))
+        //this if condition to not open another web page to provide the login when testing the myAccount Feature
+        if(!scenario.getName().contains("(customerInfo)")&&!scenario.getName().contains("(addresses)")&&!scenario.getName().contains("(don`t close the driver)"))
         {
         switch(BrowserType)
         {
@@ -67,8 +67,8 @@ public class Hooks extends configuration
     {
 
         if(driver!=null)
-        {
-            if(!scenario.getName().contains("login")&&!scenario.getName().contains("(customerInfo)")&&!scenario.getName().contains("(addresses)")) {
+        {//to ensure to not close the driver for scenario my account
+            if(!scenario.getName().contains("login")&&!scenario.getName().contains("(customerInfo)")&&!scenario.getName().contains("(addresses)")&&!scenario.getName().contains("(don`t close the driver)")) {
 
                 driver.quit();
                 driver = null;

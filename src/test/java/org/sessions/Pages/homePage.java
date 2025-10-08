@@ -115,4 +115,8 @@ public class homePage
    {
        return driver.findElement(By.xpath("//div[@class='header-links']//a[.='My account']"));
    }
+   public WebElement subItemCellPhone()
+   {
+       return driver.findElement(By.xpath("//ul[@class='top-menu notmobile']//a[contains(.,'Cell phones')]"));
+   }
 }
